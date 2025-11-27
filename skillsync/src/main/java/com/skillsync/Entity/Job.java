@@ -1,0 +1,28 @@
+package com.skillsync.Entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Entity
+@Table(name = "jobs")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Job {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+    private String description;
+    @ManyToOne
+    @JoinColumn(name = "employer_id")
+    private User employer;
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    private List<JobSkill> requiredSkills;
+}
