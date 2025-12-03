@@ -54,13 +54,37 @@ public class JobServiceImpl implements JobService {
         return dto;
     }
 
+//    @Override
+//    public List<JobDTO> getAllJob() {
+//        return List.of();
+//    }
     @Override
     public List<JobDTO> getAllJob() {
-        return List.of();
+
+        List<Job> jobs = jobRepository.findAll();
+        List<JobDTO> list = new ArrayList<>();
+
+        for (Job job : jobs) {
+            JobDTO dto = new JobDTO();
+            dto.setId(job.getId());
+            dto.setTitle(job.getTitle());
+            dto.setDescription(job.getDescription());
+            dto.setEmployerId(job.getEmployer().getId());
+            list.add(dto);
+        }
+
+        return list;
     }
 
     @Override
     public JobDTO getJobById(Long id) {
-        return null;
+        Job job = jobRepository.findById(id).orElseThrow(() -> new RuntimeException("Job Not Found!"));
+
+        JobDTO jobDTO = new JobDTO();
+        jobDTO.setId(job.getId());
+        jobDTO.setTitle(job.getTitle());
+        jobDTO.setDescription(job.getDescription());
+        jobDTO.setEmployerId(job.getEmployer().getId());
+        return jobDTO;
     }
 }

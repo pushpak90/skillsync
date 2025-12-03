@@ -4,6 +4,7 @@ import com.skillsync.DTO.SkillDTO;
 import com.skillsync.Service.SkillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public class SkillController {
     private final SkillService skillService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<SkillDTO> addSkill(@RequestBody SkillDTO dto){
         return ResponseEntity.ok(skillService.createSkill(dto));
