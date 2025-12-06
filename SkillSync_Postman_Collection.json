@@ -1,0 +1,190 @@
+{
+    "info": {
+        "name": "SkillSync API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/auth/register",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Admin User\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"admin123\",\n    \"role\": \"ADMIN\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/auth/login",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"admin123\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Skills",
+            "item": [
+                {
+                    "name": "Add Skill",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/skills",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Java\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Skills",
+                    "request": {
+                        "method": "GET",
+                        "url": "http://localhost:8080/api/skills"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Candidate Skills",
+            "item": [
+                {
+                    "name": "Add Candidate Skill",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{candidateToken}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/candidate-skills",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"userId\": 2,\n    \"skillId\": 1,\n    \"level\": 8\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Jobs",
+            "item": [
+                {
+                    "name": "Create Job",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{employerToken}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/jobs",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Java Backend Developer\",\n    \"description\": \"Strong Spring Boot skills required\",\n    \"employerId\": 3,\n    \"requiredSkills\": [\n        {\n            \"skillId\": 1,\n            \"requiredLevel\": 7\n        }\n    ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Jobs",
+                    "request": {
+                        "method": "GET",
+                        "url": "http://localhost:8080/api/jobs"
+                    }
+                },
+                {
+                    "name": "Get Job By ID",
+                    "request": {
+                        "method": "GET",
+                        "url": "http://localhost:8080/api/jobs/1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Matching",
+            "item": [
+                {
+                    "name": "Match Candidates for Job",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{employerToken}}"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/match/job/1"
+                    }
+                },
+                {
+                    "name": "Match Jobs for Candidate",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{candidateToken}}"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/match/candidate/2"
+                    }
+                },
+                {
+                    "name": "Match Results History",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": "http://localhost:8080/api/match/results"
+                    }
+                }
+            ]
+        }
+    ]
+}
