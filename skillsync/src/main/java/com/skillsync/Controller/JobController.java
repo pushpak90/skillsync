@@ -17,7 +17,7 @@ public class JobController {
 
     private final JobService jobService;
 
-    @PreAuthorize("hasRole('EMPLOYER')")
+    @PreAuthorize("hasAuthority('EMPLOYER')")
     @PostMapping
     public ResponseEntity<JobDTO> createJob(@RequestBody JobDTO dto) {
         return ResponseEntity.ok(jobService.createJob(dto));
@@ -29,7 +29,6 @@ public class JobController {
         return ResponseEntity.ok(jobService.getAllJob());
     }
 
-    @PreAuthorize("isAuthenticated()")
     @GetMapping("/{id}")
     public ResponseEntity<JobDTO> getJob(@PathVariable Long id) {
         return ResponseEntity.ok(jobService.getJobById(id));

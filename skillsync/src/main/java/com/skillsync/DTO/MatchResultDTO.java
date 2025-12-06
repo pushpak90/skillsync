@@ -6,5 +6,5 @@ import lombok.Data;
 public class MatchResultDTO {
     private Long jobId;
     private Long candidateId;
-    private int score;
+    private double  score;
 }

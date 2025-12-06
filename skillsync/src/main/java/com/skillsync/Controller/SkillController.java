@@ -15,7 +15,7 @@ import java.util.List;
 public class SkillController {
     private final SkillService skillService;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public ResponseEntity<SkillDTO> addSkill(@RequestBody SkillDTO dto){
         return ResponseEntity.ok(skillService.createSkill(dto));

@@ -15,7 +15,7 @@ import java.util.List;
 public class CandidateSkillController {
     private final CandidateSkillService candidateSkillService;
 
-    @PreAuthorize("hasRole('CANDIDATE')")
+    @PreAuthorize("hasAuthority('CANDIDATE')")
     @PostMapping
     public ResponseEntity<CandidateSkillDTO> addSkill(@RequestBody CandidateSkillDTO dto){
         return ResponseEntity.ok(candidateSkillService.addSkillToCandidate(dto));
