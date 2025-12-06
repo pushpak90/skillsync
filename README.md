@@ -210,7 +210,7 @@ http://localhost:8080
 ```
 
 ---
-
+<!--
 ## 💼 Resume-Ready Bullet Points
 
 - Developed a **role-based skill matching platform** using Spring Boot, JWT, and MySQL.
@@ -220,7 +220,7 @@ http://localhost:8080
 - Added persistence for match history through the `match_results` entity.
 - Ensured clean architecture with Controller → Service → Repository pattern.
 - Documented the project with a professional README and Postman Collection.
-
+-->
 ---
 
 ## 📌 Future Enhancements
@@ -238,5 +238,3 @@ http://localhost:8080
 Java | Spring Boot Developer  
 
 ---
-
-# ✔ README.md Complete
